@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  date: 2020-03-28
+  time: 2020-03-28 00:14:36
+  coach: one
+
+two:
+  name: MyString
+  description: MyString
+  date: 2020-03-28
+  time: 2020-03-28 00:14:36
+  coach: two

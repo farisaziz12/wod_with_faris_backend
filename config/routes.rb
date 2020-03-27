@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'class/index'
+  get 'class/show'
+  get 'class/new'
+  get 'class/create'
+  get 'class/edit'
+  get 'class/update'
+  get 'class/destroy'
   get 'user/show'
   get 'user/create'
   get 'user/new'
