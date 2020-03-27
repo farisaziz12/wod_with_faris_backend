@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
-  get 'class/index'
-  get 'class/show'
-  get 'class/new'
-  get 'class/create'
-  get 'class/edit'
-  get 'class/update'
-  get 'class/destroy'
-  get 'user/show'
-  get 'user/create'
-  get 'user/new'
-  get 'user/edit'
-  get 'user/update'
-  get 'user/destroy'
+  # users routes
+  get 'user/:id', to: 'users#show'
+  post 'user/create', to: 'users#create'
+
+  # sessions routes
+  get '/sessions', to: 'sessions#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
