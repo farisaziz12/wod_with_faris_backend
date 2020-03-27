@@ -1,5 +1,3 @@
-# Created by https://www.gitignore.io/api/ruby,rails
-# Edit at https://www.gitignore.io/?templates=ruby,rails
 
 ### Rails ###
 *.rbc
@@ -115,10 +113,4 @@ build-iPhoneSimulator/
 # .ruby-version
 # .ruby-gemset
 
-# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 
-### Ruby Patch ###
-# Used by RuboCop. Remote config files pulled in from inherit_from directive.
-# .rubocop-https?--*
-
-# End of https://www.gitignore.io/api/ruby,rails
