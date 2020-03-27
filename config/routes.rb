@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # users routes
   get 'user/:id', to: 'users#show'
   post 'user/create', to: 'users#create'
+  get 'user/login', to: 'users#login'
 
   # sessions routes
   get '/sessions', to: 'sessions#index'
