@@ -1,5 +1,13 @@
 class SessionController < ApplicationController
 
+
+    def index
+        date = params[:date]
+        sessions = Session.where(date: date)
+        render json: sessions 
+    end
+
+
     def create
         session = Session.create(session_params)
           if session.valid?

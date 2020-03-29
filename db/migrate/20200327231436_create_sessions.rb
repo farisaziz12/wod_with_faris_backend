@@ -4,7 +4,7 @@ class CreateSessions < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.date :date
-      t.time :time
+      t.string :time
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

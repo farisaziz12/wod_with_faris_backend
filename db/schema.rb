@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_234406) do
     t.string "name"
     t.string "description"
     t.date "date"
-    t.time "time"
+    t.string "time"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_03_27_234406) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "password_digest"
     t.boolean "coach"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

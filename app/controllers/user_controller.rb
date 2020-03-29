@@ -1,23 +1,9 @@
 class UserController < ApplicationController
 
-
-  def login
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      render json: user
-
-      { token: issue_token({ id: user.id }), user: user }
-    else
-      render json: { error: "Email/password combination is invalid." }, status: 401
-    end
-  end
-
-  def validate
-        if logged_in?
-            render json: @current_user
-        else
-            render json: { errors: ["Not Logged in"] }, status: :not_acceptable
-        end
+  def get_user
+    email = params[:email]
+    user = User.find_by(email: email)
+    render json: user
   end
 
   def create
@@ -38,7 +24,7 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit( :coach, :email, :password, :first_name, :last_name)
+    params.require(:user).permit( :coach, :email, :first_name, :last_name)
   end
 
 end
