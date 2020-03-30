@@ -6,6 +6,12 @@ class UserController < ApplicationController
     render json: user
   end
 
+  def update
+    user = User.find(params[:id])
+    user.update(email: params[:email], tokens: params[:tokens])
+    render json: user
+  end
+
   def create
     user = User.create(user_params)
     if user.valid?
@@ -13,6 +19,11 @@ class UserController < ApplicationController
     else
       render json: {message: user.errors.full_messages[0]}, status: :not_acceptable
     end 
+  end
+
+  def index
+    users = User.all
+    render json: users
   end
 
 
