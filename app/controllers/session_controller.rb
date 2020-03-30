@@ -17,6 +17,14 @@ class SessionController < ApplicationController
           end 
       end
 
+    def return_tokens
+        client_ids = params[:client_ids]
+        client_ids.each do |id| 
+            user = User.find(id) 
+            user.update(tokens: user.tokens + 1)
+        end
+    end
+
     def update
         session = Session.find(params[:id])
         session.update(session_params)
@@ -28,14 +36,15 @@ class SessionController < ApplicationController
     end
     
     def destroy
-    session = Session.find(params[:id])
-    session.destroy
+        session = Session.find(params[:id])
+        render json: session
+        session.destroy
     end
     
     
     private
 
     def session_params
-    params.require(:session).permit(:name, :description, :date, :time, :coach_id)
+    params.require(:session).permit(:name, :description, :date, :time, :user_id)
     end 
 end

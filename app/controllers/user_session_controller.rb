@@ -3,10 +3,17 @@ class UserSessionController < ApplicationController
     def upcoming_classes
         email = params[:email]
         user = User.find_by(email: email)
-        allclasses = UserSession.where(user_id: user.id)
-        upcoming_class_matches = allclasses.select { |session| session.session.date.between?(Date.current, Date.current + 7.days) }
-        upcoming_classes = upcoming_class_matches.map{ |session| session.session }
-        render json: upcoming_classes
+        if user.coach == false
+            allclasses = UserSession.where(user_id: user.id)
+            upcoming_class_matches = allclasses.select { |session| session.session.date.between?(Date.current, Date.current + 7.days) }
+            upcoming_classes = upcoming_class_matches.map{ |session| session.session }
+            render json: upcoming_classes
+        end
+        if user.coach == true
+            allclasses = Session.where(user_id: user.id)
+            upcoming_classes = allclasses.select { |session| session.date.between?(Date.current, Date.current + 7.days) }
+            render json: upcoming_classes
+        end
     end
 
     def class_users
