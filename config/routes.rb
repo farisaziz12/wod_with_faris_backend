@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/sessions', to: 'session#index'
   post '/sessions/create', to: 'session#create'
   post '/sessions/returntokens', to: 'session#return_tokens'
+  patch '/sessions/update/:id', to: 'session#update'
   delete '/sessions/deleted/:id', to: 'session#destroy'
   
   # userSessions routes
