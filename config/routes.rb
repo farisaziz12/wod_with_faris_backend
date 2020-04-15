@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/index', to: 'user#index'
   post 'user/create', to: 'user#create'
   patch 'user/update/:id', to: 'user#update'
+  get 'users/check', to: 'user#user_exists'
 
 
   # sessions routes

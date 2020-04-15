@@ -6,6 +6,16 @@ class UserController < ApplicationController
     render json: user
   end
 
+  def user_exists
+    email = params[:email]
+    user = User.find_by(email: email)
+    if user
+      render json: true
+    else
+      render json: false
+    end
+  end
+
   def update
     user = User.find(params[:id])
     user.update(email: params[:email], tokens: params[:tokens])
