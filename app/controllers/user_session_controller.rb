@@ -26,11 +26,16 @@ class UserSessionController < ApplicationController
     def book_session
         user_id = params[:user_id]
         session_id = params[:session_id]
-        user = User.find(user_id)
-        user.update(tokens: user.tokens - 1)
-        booking = UserSession.create(user_id: user_id, session_id: session_id)
-        usersessions = UserSession.where(session: session_id)
-        render json: usersessions
+        session_exists = UserSession.find_by(user_id: user_id,  session_id: session_id)
+        if session_exists == nil 
+            user = User.find(user_id)
+            user.update(tokens: user.tokens - 1)
+            booking = UserSession.create(user_id: user_id, session_id: session_id)
+            usersessions = UserSession.where(session: session_id)
+            render json: usersessions
+        elsif session_exists != nil
+            render json: session_exists
+        end
     end
 
     def destroy
