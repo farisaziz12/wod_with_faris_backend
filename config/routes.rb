@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   # users routes
   get 'user/getuser', to: 'user#get_user'
   get 'users/index', to: 'user#index'
-  post 'user/create', to: 'user#create'
-  patch 'user/update/:id', to: 'user#update'
   get 'users/check', to: 'user#user_exists'
+  post 'user/create', to: 'user#create'
+  post 'users/buyclasspasses', to: 'user#purchase_passes'
+  post 'users/addclasspasses', to: 'user#add_class_passes'
+  patch 'user/update/:id', to: 'user#update'
 
 
   # sessions routes

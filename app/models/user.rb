@@ -3,7 +3,6 @@ class User < ApplicationRecord
     has_many :sessions, through: :user_sessions, dependent: :destroy 
     validates :email, presence: true, uniqueness: true
 
-
     def token
         JWT.encode({ user_id: self.id }, ENV['NUTRI'])
     end

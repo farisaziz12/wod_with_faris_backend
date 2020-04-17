@@ -80,6 +80,7 @@ yarn-debug.log*
 
 # Used by dotenv library to load environment variables.
 # .env
+local_env.yml
 
 # Ignore Byebug command history file.
 

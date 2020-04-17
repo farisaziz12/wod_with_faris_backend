@@ -1,10 +1,33 @@
 class UserController < ApplicationController
 
+  def purchase_passes
+    Stripe.api_key = ENV['STRIPE_API_KEY']
+    amount = params[:quantity] * 1000
+    intent = Stripe::PaymentIntent.create({
+      amount: amount,
+      currency: 'chf',
+      description: params[:description]
+    })
+    if intent
+      render json: {client_secret: intent.client_secret}.to_json
+    end
+  end
+
   def get_user
     email = params[:email]
     user = User.find_by(email: email)
     render json: user
   end
+
+  def add_class_passes
+    quantity = params[:quantity]
+    user = User.find_by(email: params[:user_email])
+    current_tokens = user.tokens
+    final_tokens = current_tokens + quantity
+    user.update(tokens: final_tokens)
+    render json: user
+  end
+
 
   def user_exists
     email = params[:email]
