@@ -1,5 +1,5 @@
 class SessionSerializer < ActiveModel::Serializer
-  attributes :name, :description, :date, :time, :coach, :id
+  attributes :name, :description, :class_capacity, :date, :time, :coach, :id
 
   def coach
     if object.user_id
