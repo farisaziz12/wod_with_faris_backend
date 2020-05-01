@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # userSessions routes
   get 'usersessions', to: 'user_session#class_users'
   get 'usersession/upcomingclasses', to: 'user_session#upcoming_classes'
+  get 'usersession/getallattendances', to: 'user_session#get_all_attendances'
   post 'usersession/book', to: 'user_session#book_session'
   post 'usersession/unbook', to: 'user_session#destroy'
 
