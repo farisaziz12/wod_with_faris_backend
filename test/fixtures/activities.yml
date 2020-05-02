@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2020-05-02
+  type: 
+  workout: MyString
+  duration: MyString
+  calories_burned: MyString
+
+two:
+  name: MyString
+  date: 2020-05-02
+  type: 
+  workout: MyString
+  duration: MyString
+  calories_burned: MyString
