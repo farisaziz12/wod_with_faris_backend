@@ -15,7 +15,7 @@ class SessionController < ApplicationController
           else
             render json: {message: session.errors.full_messages[0]}, status: :not_acceptable
           end 
-      end
+    end
 
     def return_tokens
         client_ids = params[:client_ids]

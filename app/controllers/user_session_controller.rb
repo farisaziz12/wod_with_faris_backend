@@ -16,13 +16,6 @@ class UserSessionController < ApplicationController
         end
     end
 
-    def get_all_attendances
-        require 'date'
-        users = User.all
-        attendances = users.map{|user| { "user" => user.first_name + " " + user.last_name, "attendances" => user.sessions.select{|session| session.date.past?}.length}}
-        filtered_attendances = attendances.select{|user| user["attendances"] > 0}
-        render json: filtered_attendances
-    end
 
     def class_users
         class_id = params[:class_id]

@@ -28,6 +28,14 @@ class UserController < ApplicationController
     render json: user
   end
 
+  def get_all_attendances
+    require 'date'
+    users = User.all
+    attendances_and_activites = users.map{|user| { "user" => user.first_name + " " + user.last_name, "attendances_and_activities" => user.sessions.select{|session| session.date.past?}.length + user.activities.length, "calories_burned" => user.sessions.select{|session| session.date.past?}.length * 500 + user.activities.reduce(0){|result, activity| result += activity.calories_burned} }}
+    filtered_attendances_and_activites = attendances_and_activites.select{|user| user["attendances_and_activities"] > 0}
+    render json: filtered_attendances_and_activites
+  end
+
 
   def user_exists
     email = params[:email]
