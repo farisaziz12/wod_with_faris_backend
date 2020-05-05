@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2020-05-06
+  time: 2020-05-06 00:15:54
+  description: MyString
+  paid: false
+  location: MyString
+  client_id: one
+  coach_id: one
+
+two:
+  name: MyString
+  date: 2020-05-06
+  time: 2020-05-06 00:15:54
+  description: MyString
+  paid: false
+  location: MyString
+  client_id: two
+  coach_id: two

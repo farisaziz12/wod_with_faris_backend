@@ -1,0 +1,2 @@
+class PtsessionController < ApplicationController
+end
