@@ -12,6 +12,12 @@ class ActivityController < ApplicationController
           end 
     end
 
+    def get_user_activities
+        user = User.find_by(email: params[:user_email])
+        activities_this_week = user.activities.select { |activity| activity.date.between?(Date.current - 7, Date.current) }
+        render json: activities_this_week
+    end
+
 
     def update
         activity = Activity.find(params[:id])

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
 
   # activities routes
+  get 'activities/getuseractivities', to: 'activity#get_user_activities'
   post 'activities/create', to: 'activity#create'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
