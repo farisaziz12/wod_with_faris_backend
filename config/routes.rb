@@ -28,5 +28,10 @@ Rails.application.routes.draw do
   get 'activities/getuseractivities', to: 'activity#get_user_activities'
   post 'activities/create', to: 'activity#create'
 
+  #PtSession routes
+  post 'ptsessions/create', to: 'ptsession#create'
+
+  # UserPtSessionRoutes
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

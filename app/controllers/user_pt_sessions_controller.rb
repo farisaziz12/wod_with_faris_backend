@@ -1,0 +1,2 @@
+class UserPtSessionsController < ApplicationController
+end
