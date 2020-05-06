@@ -32,6 +32,12 @@ class PtsessionController < ApplicationController
           end 
     end
 
+    def destroy
+        pt_session = Ptsession.find(params[:id])
+        render json: pt_session
+        pt_session.destroy
+      end
+
 
 
     def pt_session_params

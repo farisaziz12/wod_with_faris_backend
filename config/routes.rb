@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   #PtSession routes
   post 'ptsessions/create', to: 'ptsession#create'
   post 'ptsessions/confirmptsession', to: 'ptsession#confrim_pt_session'
+  patch 'ptsessions/update/:id', to: 'ptsession#update'
+  delete 'ptsessions/delete/:id', to: 'ptsession#destroy'
 
 
   # UserPtSessionRoutes
