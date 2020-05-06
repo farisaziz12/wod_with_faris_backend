@@ -14,11 +14,12 @@ class PtsessionController < ApplicationController
           end 
     end
 
-    # def get_user_pt_session
-    #     user = User.find_by(email: params[:user_email])
-    #     pt_sessions_this_week = user.ptsessions.select { |ptsession| ptsession.date.between?(Date.current - 7, Date.current) }
-    #     render json: pt_sessions_this_week
-    # end
+
+    def confrim_pt_session
+        pt_session = Ptsession.find(params[:pt_session])
+        pt_session.update(paid: true)
+        render json: pt_session
+    end
 
 
     def update
@@ -34,6 +35,6 @@ class PtsessionController < ApplicationController
 
 
     def pt_session_params
-        params.require(:ptsession).permit( :name, :date, :location, :description, :time, :paid)
+        params.require(:ptsession).permit( :name, :date, :location, :description, :time, :paid, :price)
     end
 end

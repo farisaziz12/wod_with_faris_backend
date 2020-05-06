@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_225219) do
     t.date "date"
     t.string "activity_type"
     t.string "workout"
-    t.string "duration"
+    t.integer "duration"
     t.integer "calories_burned"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 2020_05_05_225219) do
   create_table "ptsessions", force: :cascade do |t|
     t.string "name"
     t.date "date"
-    t.time "time"
+    t.string "time"
     t.string "description"
     t.boolean "paid"
     t.string "location"
+    t.integer "price"
+    t.boolean "pt_session", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

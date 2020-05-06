@@ -13,6 +13,20 @@ class UserController < ApplicationController
     end
   end
 
+  def pay_for_pt_session
+    Stripe.api_key = ENV['STRIPE_API_KEY']
+    amount = params[:price] * 100
+    intent = Stripe::PaymentIntent.create({
+      amount: amount,
+      currency: 'chf',
+      description: params[:description]
+    })
+    if intent
+      render json: {client_secret: intent.client_secret}.to_json
+    end
+  end
+
+
   def get_user
     email = params[:email]
     user = User.find_by(email: email)

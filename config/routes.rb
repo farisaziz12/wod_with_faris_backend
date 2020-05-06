@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'user/create', to: 'user#create'
   post 'users/buyclasspasses', to: 'user#purchase_passes'
   post 'users/addclasspasses', to: 'user#add_class_passes'
+  post 'users/payforptsession', to: 'user#pay_for_pt_session'
   patch 'user/update/:id', to: 'user#update'
 
 
@@ -30,8 +31,11 @@ Rails.application.routes.draw do
 
   #PtSession routes
   post 'ptsessions/create', to: 'ptsession#create'
+  post 'ptsessions/confirmptsession', to: 'ptsession#confrim_pt_session'
+
 
   # UserPtSessionRoutes
+  get 'userptsession/upcomingptsessions', to: 'user_pt_sessions#get_user_pt_sessions'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

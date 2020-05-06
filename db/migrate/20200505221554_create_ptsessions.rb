@@ -7,6 +7,8 @@ class CreatePtsessions < ActiveRecord::Migration[6.0]
       t.string :description
       t.boolean :paid
       t.string :location
+      t.integer :price
+      t.boolean :pt_session, default: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
