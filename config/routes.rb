@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
 
   # UserPtSessionRoutes
-  get 'userptsession/upcomingptsessions', to: 'user_pt_sessions#get_user_pt_sessions'
+  get 'userptsessions/upcomingptsessions', to: 'user_pt_sessions#get_user_pt_sessions'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
