@@ -2,7 +2,7 @@ class UserPtSessionsController < ApplicationController
 
 
     def get_user_pt_sessions
-        user = User.find(params[:id])
+        user = User.find_by(email: params[:email])
         if user.coach == true
             allptsessions = Ptsession.where(user_id: user.id)
             pt_sessions_this_week = allptsessions.select { |ptsession| ptsession.date.between?(Date.current, Date.current + 7) }

@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   get 'activities/getuseractivities', to: 'activity#get_user_activities'
   post 'activities/create', to: 'activity#create'
 
-  
+
   # UserPtSessionRoutes
-  get 'userptsessions/upcoming/:id', to: 'user_pt_sessions#get_user_pt_sessions'
+  get 'userptsessions/upcoming', to: 'user_pt_sessions#get_user_pt_sessions'
 
   #PtSession routes
   post 'ptsessions/create', to: 'ptsession#create'
