@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   get 'activities/getuseractivities', to: 'activity#get_user_activities'
   post 'activities/create', to: 'activity#create'
 
+  
+  # UserPtSessionRoutes
+  get 'userptsessions/upcoming/:id', to: 'user_pt_sessions#get_user_pt_sessions'
+
   #PtSession routes
   post 'ptsessions/create', to: 'ptsession#create'
   post 'ptsessions/confirmptsession', to: 'ptsession#confrim_pt_session'
@@ -36,8 +40,6 @@ Rails.application.routes.draw do
   delete 'ptsessions/delete/:id', to: 'ptsession#destroy'
 
 
-  # UserPtSessionRoutes
-  get 'userptsessions/upcoming/:id', to: 'user_pt_sessions#get_user_pt_sessions'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
