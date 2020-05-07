@@ -10,7 +10,7 @@ class UserSessionController < ApplicationController
             upcoming_classes_with_coach = upcoming_classes.map{|session| { 'class' => session, 'coach' => User.find(session.user_id)}}
             allptsessions = UserPtSession.where(user_id: user.id)
             pt_sessions_this_week = allptsessions.select { |ptsession| ptsession.ptsession.date.between?(Date.current, Date.current + 7) }
-            upcoming_classes_and_pt_sessions = {'classes' => upcoming_classes_with_coach, 'ptsessions' => pt_sessions_this_week}
+            upcoming_classes_and_pt_sessions = {'classes' => upcoming_classes_with_coach, 'ptsessions' => pt_sessions_this_week.map{|pt| pt.session}}
             render json: upcoming_classes_and_pt_sessions 
         end
         if user.coach == true
