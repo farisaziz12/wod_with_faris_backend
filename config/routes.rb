@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
 
   # UserPtSessionRoutes
-  get 'ptsessions/upcoming', to: 'user_pt_sessions#get_user_pt_sessions'
+  post 'ptsessions/upcoming', to: 'user_pt_sessions#get_user_pt_sessions'
 
   #PtSession routes
   post 'ptsessions/create', to: 'ptsession#create'
