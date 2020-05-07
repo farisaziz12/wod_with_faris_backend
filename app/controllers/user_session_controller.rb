@@ -7,14 +7,22 @@ class UserSessionController < ApplicationController
             allclasses = UserSession.where(user_id: user.id)
             upcoming_class_matches = allclasses.select { |session| session.session.date.between?(Date.current, Date.current + 7.days) }
             upcoming_classes = upcoming_class_matches.map{ |session| session.session }
-            render json: upcoming_classes
+            allptsessions = UserPtSession.where(user_id: user.id)
+            pt_sessions_this_week = allptsessions.select { |ptsession| ptsession.ptsession.date.between?(Date.current, Date.current + 7) }
+            upcoming_classes_and_pt_sessions = {'classes' => upcoming_classes, 'ptsessions' => pt_sessions_this_week}
+            render json: upcoming_classes_and_pt_sessions 
         end
         if user.coach == true
             allclasses = Session.where(user_id: user.id)
             upcoming_classes = allclasses.select { |session| session.date.between?(Date.current, Date.current + 7.days) }
-            render json: upcoming_classes
+            allptsessions = Ptsession.where(user_id: user.id)
+            pt_sessions_this_week = allptsessions.select { |ptsession| ptsession.date.between?(Date.current, Date.current + 7) }
+            pt_sessions_with_user = pt_sessions_this_week.map{|pt| { 'ptsession' => pt, 'user' => UserPtSession.find(pt.id).user}}
+            upcoming_classes_and_pt_sessions = {'classes' => upcoming_classes, 'ptsessions' => pt_sessions_with_user}
+            render json: upcoming_classes_and_pt_sessions 
         end
     end
+
 
 
     def class_users
