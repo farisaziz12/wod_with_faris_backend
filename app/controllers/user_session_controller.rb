@@ -7,7 +7,7 @@ class UserSessionController < ApplicationController
             allclasses = UserSession.where(user_id: user.id)
             upcoming_class_matches = allclasses.select { |session| session.session.date.between?(Date.current, Date.current + 7.days) }
             upcoming_classes = upcoming_class_matches.map{ |session| session.session }
-            upcoming_classes_with_coach = upcoming_classes.map{|session| { 'class' => session, 'coach' => User.find(pt.user_id)}}
+            upcoming_classes_with_coach = upcoming_classes.map{|session| { 'class' => session, 'coach' => User.find(session.user_id)}}
             allptsessions = UserPtSession.where(user_id: user.id)
             pt_sessions_this_week = allptsessions.select { |ptsession| ptsession.ptsession.date.between?(Date.current, Date.current + 7) }
             upcoming_classes_and_pt_sessions = {'classes' => upcoming_classes_with_coach, 'ptsessions' => pt_sessions_this_week}
@@ -16,7 +16,7 @@ class UserSessionController < ApplicationController
         if user.coach == true
             allclasses = Session.where(user_id: user.id)
             upcoming_classes = allclasses.select { |session| session.date.between?(Date.current, Date.current + 7.days) }
-            upcoming_classes_with_coach = upcoming_classes.map{|session| { 'class' => session, 'coach' => User.find(pt.user_id)}}
+            upcoming_classes_with_coach = upcoming_classes.map{|session| { 'class' => session, 'coach' => User.find(session.user_id)}}
             allptsessions = Ptsession.where(user_id: user.id)
             pt_sessions_this_week = allptsessions.select { |ptsession| ptsession.date.between?(Date.current, Date.current + 7) }
             pt_sessions_with_user = pt_sessions_this_week.map{|pt| { 'ptsession' => pt, 'user' => UserPtSession.find(pt.id).user}}
