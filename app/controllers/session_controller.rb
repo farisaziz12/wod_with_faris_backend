@@ -2,8 +2,7 @@ class SessionController < ApplicationController
 
 
     def index
-        date = params[:date]
-        sessions = Session.where(date: date)
+        sessions = Session.all.select{|session| !session.date.past?}
         render json: sessions 
     end
 
