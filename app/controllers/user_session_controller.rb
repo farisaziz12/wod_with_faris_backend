@@ -25,6 +25,11 @@ class UserSessionController < ApplicationController
         end
     end
 
+    def user_prev_sessions_current_tokens
+        user = User.find(params[:id])
+        sessions_prev_week = user.sessions.select { |session| session.date.between?(Date.current - 7, Date.current) }
+        render json: { sessions_prev_week: sessions_prev_week.length, tokens: user.tokens }
+    end
 
 
     def class_users

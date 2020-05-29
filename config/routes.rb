@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # userSessions routes
   get 'usersessions', to: 'user_session#class_users'
   get 'usersession/upcomingclasses', to: 'user_session#upcoming_classes'
+  get 'usersession/prevsessionsandtokens/:id', to: 'user_session#user_prev_sessions_current_tokens'
   post 'usersession/book', to: 'user_session#book_session'
   post 'usersession/unbook', to: 'user_session#destroy'
 
