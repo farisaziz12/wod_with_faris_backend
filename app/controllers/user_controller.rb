@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
   def purchase_passes
     Stripe.api_key = ENV['STRIPE_API_KEY']
-    amount = params[:quantity] * 1000
+    amount = params[:quantity] * 1500
     intent = Stripe::PaymentIntent.create({
       amount: amount,
       currency: 'chf',
