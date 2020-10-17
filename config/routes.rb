@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/index', to: 'user#index'
   get 'users/getallattendances', to: 'user#get_all_attendances'
   get 'users/check', to: 'user#user_exists'
+  post 'user/store_profile_img', to: 'user#store_profile_img'
   post 'user/create', to: 'user#create'
   post 'users/buyclasspasses', to: 'user#purchase_passes'
   post 'users/addclasspasses', to: 'user#add_class_passes'

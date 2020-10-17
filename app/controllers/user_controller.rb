@@ -33,6 +33,14 @@ class UserController < ApplicationController
     render json: user
   end
 
+  def store_profile_img
+    img = params[:img]
+    id = params[:user_id]
+    user = User.find(id)
+    user.update(image: img)
+    render json: user
+  end
+
   def add_class_passes
     quantity = params[:quantity]
     user = User.find_by(email: params[:user_email])

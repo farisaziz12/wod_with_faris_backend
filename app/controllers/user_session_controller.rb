@@ -54,6 +54,8 @@ class UserSessionController < ApplicationController
         end
     end
 
+    
+
     def destroy
         user_id = params[:user_id]
         session_id = params[:session_id]
