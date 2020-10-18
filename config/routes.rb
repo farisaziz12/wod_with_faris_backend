@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   # team routes
 
   get 'team/my_team', to: 'team#my_team'
+  get 'team/all_teams', to: 'team#all_teams'
   post 'team/create_team', to: 'team#create_team'
   post 'team/join_team', to: 'team#join_team'
 

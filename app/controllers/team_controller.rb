@@ -1,5 +1,14 @@
 class TeamController < ApplicationController
 
+    def all_teams
+        teams = Team.all
+        if teams.valid?
+          render json: teams
+        else
+          render json: {message: teams.errors.full_messages[0]}, status: :not_acceptable
+        end 
+    end
+
     def create_team
         team = Team.create(team_params)
         if team.valid?
