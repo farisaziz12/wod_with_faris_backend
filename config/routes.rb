@@ -31,6 +31,12 @@ Rails.application.routes.draw do
   get 'activities/getuseractivities', to: 'activity#get_user_activities'
   post 'activities/create', to: 'activity#create'
 
+  # team routes
+
+  get 'team/my_team', to: 'team#my_team'
+  post 'team/create_team', to: 'team#create_team'
+  post 'team/join_team', to: 'team#join_team'
+
 
   # UserPtSessionRoutes
   # post 'ptsessions/upcoming', to: 'user_pt_sessions#get_user_pt_sessions'
