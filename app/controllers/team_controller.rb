@@ -2,10 +2,10 @@ class TeamController < ApplicationController
 
     def all_teams
         teams = Team.all
-        if teams.valid?
+        if teams[0]
           render json: teams
         else
-          render json: {message: teams.errors.full_messages[0]}, status: :not_acceptable
+          render json: {message: "No Teams"}, status: :bad_request
         end 
     end
 
