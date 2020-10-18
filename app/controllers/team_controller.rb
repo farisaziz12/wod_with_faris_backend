@@ -37,7 +37,7 @@ class TeamController < ApplicationController
         if team[0].valid?
             render json: team
           else
-            render json: {message: team.errors.full_messages[0]}, status: :bad_request
+            render json: {message: "Team Request Error"}, status: :bad_request
         end 
     end
     
