@@ -34,10 +34,10 @@ class TeamController < ApplicationController
         team_athletes = AthleteTeam.all.filter {|team| team.id = athlete_team.team_id}
         team = team_athletes.map {|team| team.user}
         
-        if team[0].valid?
+        if team[0]
             render json: team
           else
-            render json: {message: "Team Request Error"}, status: :bad_request
+            render json: {message: "No Team"}, status: :bad_request
         end 
     end
     
