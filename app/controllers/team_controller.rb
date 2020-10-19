@@ -9,6 +9,16 @@ class TeamController < ApplicationController
         end 
     end
 
+    def get_team_athletes
+        team_id = params[:id].to_i
+        team = AthleteTeam.select{|athlete_team| athlete_team.team_id == team_id}
+        if team[0]
+            render json: {team: team.map{|athlete| athlete.user}}
+          else
+            render json: {message: "No Team"}, status: :bad_request
+          end 
+    end
+
     def create_team
         team = Team.create(team_params)
         if team.valid?
