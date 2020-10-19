@@ -28,6 +28,20 @@ class TeamController < ApplicationController
         end 
     end
 
+    def exit_team
+        email = params[:email]
+        team = params[:team_id]
+        user = User.find_by(email: email)
+        athlete_team =  AthleteTeam.all.filter {|athleteteam| athleteteam.id = team}
+        athlete_team.delete
+
+            if !athlete_team
+                render json: {message: "Delete Success"}
+              else
+                render json: {message: "Delete Error"}, status: :bad_request
+            end 
+    end
+
     def join_team
         email = params[:email]
         team = params[:team_id]

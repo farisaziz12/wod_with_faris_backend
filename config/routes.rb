@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'team/get_team_athletes', to: 'team#get_team_athletes'
   post 'team/create_team', to: 'team#create_team'
   post 'team/join_team', to: 'team#join_team'
+  post 'team/exit_team', to: 'team#exit_team'
 
 
   # UserPtSessionRoutes
