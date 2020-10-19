@@ -45,7 +45,7 @@ class TeamController < ApplicationController
         email = params[:email]
         team = params[:team_id]
         user = User.find_by(email: email)
-        athlete_team =  AthleteTeam.all.filter {|athleteteam| athleteteam.id == team}
+        athlete_team =  AthleteTeam.all.filter {|athleteteam| athleteteam.id = team}
 
         if athlete_team.length < 4 and athlete_team.find {|team| team.user.id == user.id} == nil
             AthleteTeam.create(user_id: user.id, team_id: team)
