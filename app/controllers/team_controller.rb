@@ -48,9 +48,9 @@ class TeamController < ApplicationController
         athlete_team =  AthleteTeam.all.filter {|athleteteam| athleteteam.id = team}
 
         if athlete_team.length < 4 and athlete_team.find {|team| team.user.id == user.id} == nil
-            AthleteTeam.create(user_id: user.id, team_id: team)
-            if athlete_team[0].valid?
-                render json: athlete_team.map {|team| team.user}
+            athlete_team = AthleteTeam.create(user_id: user.id, team_id: team)
+            if athlete_team.valid?
+                render json: user
               else
                 render json: {message: athlete_team.errors.full_messages[0]}, status: :bad_request
             end 
