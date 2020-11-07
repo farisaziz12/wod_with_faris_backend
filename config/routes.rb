@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   post 'team/create_team', to: 'team#create_team'
   post 'team/join_team', to: 'team#join_team'
   post 'team/exit_team', to: 'team#exit_team'
+  delete 'team/delete_team/:id', to: 'team#delete_team'
 
 
   # UserPtSessionRoutes

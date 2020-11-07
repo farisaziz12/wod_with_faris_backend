@@ -59,6 +59,13 @@ class TeamController < ApplicationController
         end
     end
 
+    def delete_team
+      id = params[:id]
+      team = Team.find(id)
+      team.delete
+      render json: team
+    end
+
     def my_team
         email = params[:email]
         user = User.find_by(email: email)
