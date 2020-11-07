@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'users/addclasspasses', to: 'user#add_class_passes'
   post 'users/payforptsession', to: 'user#pay_for_pt_session'
   patch 'user/update/:id', to: 'user#update'
+  delete 'user/delete:id', to: 'user#destroy'
 
 
   # sessions routes

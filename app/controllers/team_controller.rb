@@ -53,7 +53,7 @@ class TeamController < ApplicationController
                 render json: user
               else
                 render json: {message: athlete_team.errors.full_messages[0]}, status: :bad_request
-            end 
+            end
         else
             render json: {message: "Team Full"}, status: :bad_request
         end
