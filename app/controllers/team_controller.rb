@@ -70,16 +70,19 @@ class TeamController < ApplicationController
         email = params[:email]
         user = User.find_by(email: email)
         athlete_team = AthleteTeam.find_by(user_id: user.id)
-        team_athletes = AthleteTeam.all.filter {|team| team.id = athlete_team.team_id}
-        team = team_athletes.map {|team| team.user}
-        
-        if team[0]
+        if athlete_team
+          team_athletes = AthleteTeam.all.filter {|team| team.id = athlete_team.team_id}
+          team = team_athletes.map {|team| team.user}
+          if team && team[0]
             render json: team
           else
             render json: {message: "No Team"}, status: :bad_request
-        end 
+          end
+        else
+          render json: {message: "No Team"}, status: :bad_request
+        end
     end
-    
+
     private
 
     def team_params
